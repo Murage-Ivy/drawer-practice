@@ -65,7 +65,7 @@ class MyDrawer extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Container(
-                              width: 80,
+                              width: 100,
                               height: 100,
                               child: CircleAvatar(
                                 backgroundImage:
@@ -86,9 +86,31 @@ class MyDrawer extends StatelessWidget {
                             "alice@gmail.com",
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Color(0xFFf7a400)),
-                          )
+                          ),
                         ],
                       ))),
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.home),
+                    title: Text("Home"),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.person),
+                    title: Text("Profile"),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.settings),
+                    title: Text("Settings"),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.logout),
+                    title: Text("Logout"),
+                  ),
+                ],
+              ),
             )
           ],
         ),
