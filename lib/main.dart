@@ -37,16 +37,24 @@ class _MyAppState extends State<MyApp> {
           title: const Text("Navigation Drawer"),
         ),
         body: list[index],
-        drawer: MyDrawer(),
+        drawer: MyDrawer(
+          onTap: (ctx, i) {
+            setState(() {
+              index = i;
+              Navigator.pop(ctx);
+            });
+          },
+        ),
       ),
     );
   }
 }
 
 class MyDrawer extends StatelessWidget {
-  // final Function onTap;
+  final Function onTap;
 
-  // MyDrawer({this.onTap});
+  // ignore: use_key_in_widget_constructors
+  const MyDrawer({Key? key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -96,18 +104,25 @@ class MyDrawer extends StatelessWidget {
                   ListTile(
                     leading: Icon(Icons.home),
                     title: Text("Home"),
+                    onTap: () => onTap(context, 0),
                   ),
                   ListTile(
                     leading: Icon(Icons.person),
                     title: Text("Profile"),
+                    onTap: () => onTap(context, 1),
                   ),
                   ListTile(
                     leading: Icon(Icons.settings),
                     title: Text("Settings"),
+                    onTap: () => onTap(context, 2),
+                  ),
+                  Divider(
+                    height: 1,
                   ),
                   ListTile(
-                    leading: Icon(Icons.logout),
+                    leading: Icon(Icons.exit_to_app),
                     title: Text("Logout"),
+                    onTap: () => onTap(context, 0),
                   ),
                 ],
               ),
